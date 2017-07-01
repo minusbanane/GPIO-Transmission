@@ -11,6 +11,7 @@ print('waiting for transmission')
 
 while True:
     transmission = json.loads(converter.bintostr(receiver.watch().getrawbinary()))
+    print('\n---------- Received new transmission ----------')
     req_class = getattr(DataTypes, transmission['type'])
 
     data_object = req_class()

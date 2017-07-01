@@ -29,5 +29,6 @@ class Receiver:
                 gpio.output(24, self.is_read)
                 sys.stdout.write('\r')
                 sys.stdout.write(str(len(self.transmission.getrawbinary())) + ' bits Received')
-        print('')
+        sys.stdout.write('\r')
+        sys.stdout.write('                                                                    ')
         return self.transmission

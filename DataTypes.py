@@ -8,20 +8,25 @@ class DataType:
 class Message(DataType):
     def __init__(self):
         self.__send = time.time()
+        self.converter = Converter()
 
     def setup(self, args = None):
-        self.__author = input('Autor: ')
-        self.__text = input('Text: ')
+        if args is None:
+            self.__author = input('Autor: ')
+            self.__text = input('Text: ')
+        else:
+            self.__author = args[0]
+            self.__text = args[1]
 
     def serialize(self):
-        return json.dumps({
+        return self.converter.strtobin(json.dumps({
             'author': self.__author,
             'text': self.__text,
             'send': self.__send
-        })
+        }))
 
     def deserialize(self, serialized):
-        desered = serialized
+        desered = json.loads(self.converter.bintostr(serialized))
         self.__author = desered['author']
         self.__text = desered['text']
         self.__send = desered['send']
