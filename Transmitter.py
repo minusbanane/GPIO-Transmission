@@ -25,5 +25,5 @@ class Transmitter:
                 pass
             self.has_read = gpio.input(22)
             sys.stdout.write('\r')
-            sys.stdout.write(str(i) + ' of ' + str(length) + ' bits')
+            sys.stdout.write(str(i) + ' of ' + str(length) + ' bits (' + str(round(i / length * 100, 0)) + '%)')
         print('')
