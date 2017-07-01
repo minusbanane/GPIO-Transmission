@@ -12,6 +12,8 @@ for filename in next(os.walk(str(dir)))[2]:
     if filename != 'changes.watcher':
         files[filename] = open(filename, 'r').read()
 
+os.system('scp ' + dir + '/* pi@raspberrypi:/media/pi/UUI1/raspberry/messages/')
+
 while True:
     for key in files:
         if files[key] != open(key, 'r').read():
